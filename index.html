@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Makeup Zone MTY — Cosmetiqueras de Marca 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Lato',sans-serif; background:#FFF5F8; color:#3a1a2e; overflow-x:hidden; }
+
+
+    /* ── ANUNCIO SUPERIOR ── */
+    .sprinkle-bar { display:flex; justify-content:center; align-items:center; gap:6px; padding:10px; background:#C9637A; }
+    .sprinkle-bar span { font-size:11px; color:#FDE8EF; letter-spacing:0.2em; text-transform:uppercase; }
+    .dot { width:4px; height:4px; border-radius:50%; background:#f9d6e4; flex-shrink:0; }
+
+    /* ── NAV ── */
+    .nav { background:#fff; border-bottom:1px solid #f5d5e0; padding:0.9rem 2rem; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:200; }
+    .nav-logo { font-family:'Playfair Display',serif; font-size:1.4rem; font-style:italic; color:#7a2e48; cursor:pointer; display:flex; align-items:center; gap:10px; }
+    .nav-logo img { width:40px; height:40px; border-radius:50%; border:2px solid #E8A0B4; object-fit:cover; background:#fff; }
+    .nav-logo span { color:#C9637A; }
+    .nav-links { display:flex; gap:1.5rem; align-items:center; }
+    .nav-links a { font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:#9e6070; text-decoration:none; transition:color 0.2s; cursor:pointer; }
+    .nav-links a:hover { color:#C9637A; }
+    .nav-cart { background:#FDE8EF; border:1px solid #E8A0B4; border-radius:50px; padding:7px 18px; font-size:12px; color:#C9637A; cursor:pointer; font-family:'Lato',sans-serif; letter-spacing:0.05em; transition:background 0.2s; white-space:nowrap; }
+    .nav-cart:hover { background:#C9637A; color:#fff; }
+
+    /* ── HERO ── */
+    .hero { position:relative; min-height:520px; background:#FDE8EF; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:3rem 2rem 4rem; overflow:hidden; }
+    .hero-canvas { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; }
+    .hero-eyebrow { font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:#C9637A; margin-bottom:1rem; position:relative; }
+    .hero-title { font-family:'Playfair Display',serif; font-size:clamp(2.6rem,7vw,4.8rem); font-weight:400; font-style:italic; line-height:1.1; color:#7a2e48; margin-bottom:1rem; position:relative; }
+    .hero-title span { font-style:normal; font-weight:700; color:#C9637A; }
+    .hero-sub { font-size:15px; color:#9e6070; max-width:400px; line-height:1.7; position:relative; margin-bottom:0.5rem; font-weight:300; }
+    .hero-sub2 { font-size:13px; color:#b07e8a; max-width:360px; line-height:1.7; position:relative; margin-bottom:2rem; font-weight:300; }
+    .btn-primary { background:#C9637A; color:#fff; border:none; padding:14px 36px; border-radius:50px; font-family:'Lato',sans-serif; font-size:14px; letter-spacing:0.08em; cursor:pointer; position:relative; transition:background 0.2s,transform 0.15s; text-transform:uppercase; }
+    .btn-primary:hover { background:#b04f66; transform:translateY(-2px); }
+
+    /* ── SECCIONES ── */
+    .section-title { font-family:'Playfair Display',serif; font-size:2rem; font-style:italic; color:#7a2e48; text-align:center; margin-bottom:0.4rem; }
+    .section-sub { text-align:center; font-size:13px; letter-spacing:0.15em; text-transform:uppercase; color:#C9637A; margin-bottom:2.5rem; }
+
+    /* ── FILTROS ── */
+    .filter-bar { display:flex; justify-content:center; flex-wrap:wrap; gap:8px; margin-bottom:2rem; }
+    .filter-btn { background:#fff; border:1px solid #E8A0B4; color:#C9637A; border-radius:50px; padding:7px 18px; font-size:12px; letter-spacing:0.05em; cursor:pointer; transition:background 0.15s; font-family:'Lato',sans-serif; white-space:nowrap; }
+    .filter-btn:hover, .filter-btn.active { background:#C9637A; color:#fff; border-color:#C9637A; }
+
+    /* ── BUSCADOR ── */
+    .search-wrap { max-width:360px; margin:0 auto 1.5rem; position:relative; }
+    .search-wrap svg { position:absolute; left:13px; top:50%; transform:translateY(-50%); color:#C9637A; pointer-events:none; }
+    .search-wrap input { width:100%; padding:9px 14px 9px 37px; border:1.5px solid #f5d5e0; border-radius:50px; font-family:'Lato',sans-serif; font-size:13px; color:#3a1a2e; background:#fff; outline:none; transition:border-color 0.2s; }
+    .search-wrap input:focus { border-color:#C9637A; }
+    .search-wrap input::placeholder { color:#b07e8a; }
+
+    /* ── PRODUCTOS ── */
+    .products { padding:4rem 2rem; background:#FFF5F8; max-width:1080px; margin:0 auto; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:20px; }
+    .card { background:#fff; border-radius:20px; overflow:hidden; border:1px solid #f5d5e0; transition:transform 0.2s,box-shadow 0.2s; position:relative; }
+    .card:hover { transform:translateY(-5px); box-shadow:0 12px 32px rgba(194,24,91,0.12); }
+    .card.hidden { display:none !important; }
+
+    .card-img-wrap { width:100%; height:170px; display:flex; align-items:center; justify-content:center; overflow:hidden; padding:0.8rem; position:relative; }
+    .card-img-wrap img { max-height:150px; max-width:100%; object-fit:contain; border-radius:8px; transition:transform 0.3s; }
+    .card:hover .card-img-wrap img { transform:scale(1.04); }
+
+    .card-badge { position:absolute; top:10px; right:10px; background:#C9637A; color:#fff; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; padding:4px 10px; border-radius:50px; }
+    .card-body { padding:1rem 1.25rem 1.25rem; }
+    .card-brand { font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#C9637A; font-weight:700; margin-bottom:2px; }
+    .card-name { font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:#7a2e48; margin-bottom:3px; line-height:1.3; }
+    .card-size { font-size:11px; color:#b07e8a; margin-bottom:0.6rem; }
+
+    .price-row { display:flex; gap:7px; margin-bottom:0.75rem; flex-wrap:wrap; }
+    .pill { border-radius:50px; padding:4px 13px; font-size:12px; font-weight:700; line-height:1.3; display:flex; flex-direction:column; align-items:center; }
+    .pill-label { font-size:9px; font-weight:600; opacity:0.75; margin-bottom:1px; }
+    .pill-r { background:#FDE8EF; color:#7a2e48; }
+    .pill-b { background:#C9637A; color:#fff; }
+
+    .qty-row { display:flex; align-items:center; gap:10px; margin-bottom:0.75rem; }
+    .qty-label { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#9e6070; }
+    .qty-ctrl { display:flex; align-items:center; gap:8px; }
+    .qty-btn { background:#FDE8EF; border:1px solid #E8A0B4; color:#C9637A; border-radius:50%; width:28px; height:28px; font-size:16px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.15s; }
+    .qty-btn:hover { background:#C9637A; color:#fff; border-color:#C9637A; }
+    .qty-num { font-size:15px; font-weight:700; color:#7a2e48; min-width:20px; text-align:center; }
+
+    .btn-add { width:100%; background:#C9637A; border:none; color:#fff; border-radius:50px; padding:10px 0; font-size:13px; cursor:pointer; font-family:'Lato',sans-serif; letter-spacing:0.08em; text-transform:uppercase; transition:background 0.2s,transform 0.15s; }
+    .btn-add:hover { background:#b04f66; }
+    .btn-add.added { background:#7a2e48; }
+
+    /* Empty state */
+    .empty-state { text-align:center; padding:3rem 2rem; display:none; }
+    .empty-state.visible { display:block; }
+    .empty-state div { font-size:3rem; margin-bottom:0.8rem; }
+    .empty-state p { color:#b07e8a; font-size:14px; }
+
+    /* ── STATS ── */
+    .stats-section { background:#fff; padding:3rem 2rem; }
+    .stats-inner { max-width:880px; margin:0 auto; display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; align-items:center; }
+    .stat-num { font-family:'Playfair Display',serif; font-size:2.5rem; color:#C9637A; font-style:italic; }
+    .stat-label { font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:#b07e8a; margin-top:4px; }
+    .stat-divider { width:1px; height:40px; background:#f5d5e0; }
+
+    /* ── MAYOREO ── */
+    .mayoreo-section { background:#FDE8EF; padding:4rem 2rem; text-align:center; }
+    .mayoreo-inner { max-width:580px; margin:0 auto; }
+    .mayoreo-icon { font-size:56px; margin-bottom:1rem; display:block; }
+    .mayoreo-title { font-family:'Playfair Display',serif; font-size:2.2rem; font-style:italic; color:#7a2e48; margin-bottom:0.75rem; }
+    .mayoreo-text { font-size:14px; color:#9e6070; line-height:1.8; margin-bottom:2rem; font-weight:300; }
+    .tags { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:2rem; }
+    .tag { background:#fff; border:1px solid #E8A0B4; color:#C9637A; border-radius:50px; padding:6px 16px; font-size:12px; letter-spacing:0.05em; cursor:pointer; transition:background 0.15s; }
+    .tag:hover { background:#C9637A; color:#fff; border-color:#C9637A; }
+
+    /* ── RESEÑAS ── */
+    .testi-section { padding:4rem 2rem; background:#FFF5F8; max-width:880px; margin:0 auto; }
+    .testi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-top:2rem; }
+    .testi-card { background:#fff; border-radius:16px; padding:1.25rem; border:1px solid #f5d5e0; }
+    .stars { color:#E8A0B4; font-size:14px; margin-bottom:0.5rem; }
+    .testi-text { font-size:13px; color:#7a5060; line-height:1.7; font-style:italic; margin-bottom:0.75rem; }
+    .testi-name { font-size:12px; color:#C9637A; font-weight:700; letter-spacing:0.05em; }
+
+    /* ── CONTACTO ── */
+    .contact-section { background:#fff; padding:4rem 2rem; }
+    .contact-inner { max-width:580px; margin:0 auto; text-align:center; }
+    .contact-options { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:2rem; }
+    .contact-card { background:#FFF5F8; border:1px solid #f5d5e0; border-radius:16px; padding:1.5rem; cursor:pointer; transition:transform 0.15s,border-color 0.15s; text-decoration:none; display:block; }
+    .contact-card:hover { transform:translateY(-3px); border-color:#E8A0B4; }
+    .contact-card-icon { width:52px; height:52px; margin:0 auto 0.6rem; display:flex; align-items:center; justify-content:center; }
+    .contact-card-title { font-family:'Playfair Display',serif; font-style:italic; color:#7a2e48; font-size:1rem; margin-bottom:4px; }
+    .contact-card-sub { font-size:12px; color:#b07e8a; }
+
+    /* ── FOOTER ── */
+    footer { background:#7a2e48; color:#f9d6e4; text-align:center; padding:2.5rem 2rem; }
+    .footer-title { font-family:'Playfair Display',serif; font-size:1.5rem; font-style:italic; margin-bottom:0.5rem; color:#FDE8EF; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:10px; }
+    .footer-title img { width:52px; height:52px; border-radius:50%; border:2px solid #E8A0B4; object-fit:cover; background:#fff; }
+    .footer-sub { font-size:12px; color:#e8a0b4; letter-spacing:0.1em; margin-bottom:1rem; }
+    .footer-links { display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap; margin-bottom:1rem; }
+    .footer-links a { color:#E8A0B4; font-size:12px; text-decoration:none; letter-spacing:0.08em; cursor:pointer; }
+    .footer-links a:hover { color:#FDE8EF; }
+
+    /* ── MODALES ── */
+    .modal-overlay { display:none; position:fixed; inset:0; background:rgba(60,20,35,0.5); z-index:500; align-items:center; justify-content:center; padding:1rem; }
+    .modal-overlay.open { display:flex; }
+    .modal { background:#fff; border-radius:24px; padding:2rem; width:100%; max-width:480px; max-height:88vh; overflow-y:auto; position:relative; }
+    .modal-close { position:absolute; top:1rem; right:1rem; background:#FDE8EF; border:none; border-radius:50%; width:32px; height:32px; font-size:18px; cursor:pointer; color:#C9637A; display:flex; align-items:center; justify-content:center; }
+    .modal-close:hover { background:#C9637A; color:#fff; }
+    .modal-title { font-family:'Playfair Display',serif; font-size:1.5rem; font-style:italic; color:#7a2e48; margin-bottom:1.5rem; }
+
+    /* CARRITO */
+    .cart-item { display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid #f5d5e0; }
+    .cart-item-thumb { width:48px; height:48px; border-radius:8px; object-fit:contain; background:#FDE8EF; flex-shrink:0; padding:4px; }
+    .cart-item-info { flex:1; min-width:0; }
+    .cart-item-brand { font-size:10px; color:#C9637A; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; }
+    .cart-item-name { font-family:'Playfair Display',serif; font-style:italic; color:#7a2e48; font-size:14px; line-height:1.3; }
+    .cart-item-price { font-size:12px; color:#C9637A; font-weight:700; margin-top:2px; }
+    .cart-qty-ctrl { display:flex; align-items:center; gap:6px; flex-shrink:0; }
+    .cqty-btn { background:#FDE8EF; border:1px solid #E8A0B4; color:#C9637A; border-radius:50%; width:26px; height:26px; font-size:16px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.15s; }
+    .cqty-btn:hover { background:#C9637A; color:#fff; border-color:#C9637A; }
+    .cqty-num { font-size:14px; font-weight:700; color:#7a2e48; min-width:20px; text-align:center; }
+    .cart-total-row { display:flex; justify-content:space-between; align-items:center; padding-top:1rem; margin-top:0.5rem; border-top:1px solid #f5d5e0; }
+    .cart-total-label { font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:#9e6070; }
+    .cart-total-price { font-family:'Playfair Display',serif; font-size:1.5rem; color:#C9637A; font-weight:700; }
+    .cart-empty { text-align:center; padding:2rem 0; color:#b07e8a; font-size:14px; }
+    .cart-empty span { font-size:48px; display:block; margin-bottom:0.75rem; }
+
+    /* SEPARADOR */
+    .pay-divider { display:flex; align-items:center; gap:10px; margin:14px 0; }
+    .pay-divider-line { flex:1; height:1px; background:#f5d5e0; }
+    .pay-divider-text { font-size:11px; color:#b07e8a; letter-spacing:0.1em; text-transform:uppercase; }
+    .pay-info { background:#FFF5F8; border-radius:12px; padding:12px 14px; margin-top:12px; font-size:12px; color:#9e6070; line-height:1.6; text-align:center; }
+    .pay-info strong { color:#C9637A; }
+
+    /* FORMULARIO COTIZACIÓN */
+    .form-group { margin-bottom:1.1rem; }
+    .form-label { display:block; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#9e6070; margin-bottom:5px; }
+    .form-input, .form-select, .form-textarea { width:100%; padding:10px 14px; border:1.5px solid #f5d5e0; border-radius:12px; font-family:'Lato',sans-serif; font-size:14px; color:#3a1a2e; background:#FFF5F8; transition:border-color 0.2s; outline:none; }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color:#C9637A; background:#fff; }
+    .form-textarea { min-height:80px; resize:vertical; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .form-success { background:#f9e8f0; border:1px solid #E8A0B4; border-radius:16px; padding:1.5rem; text-align:center; display:none; }
+    .form-success span { font-size:40px; display:block; margin-bottom:0.5rem; }
+    .form-success p { font-size:14px; color:#7a2e48; line-height:1.6; }
+
+    /* TOAST */
+    .toast { position:fixed; bottom:2rem; left:50%; transform:translateX(-50%) translateY(80px); background:#7a2e48; color:#FDE8EF; padding:12px 24px; border-radius:50px; font-size:13px; opacity:0; transition:all 0.3s; z-index:999; pointer-events:none; white-space:nowrap; }
+    .toast.show { transform:translateX(-50%) translateY(0); opacity:1; }
+
+    /* MODAL NOSOTRAS */
+    .about-highlight { background:#FDE8EF; border-radius:16px; padding:1.25rem; margin:1rem 0 1.5rem; }
+
+    /* RESULTADOS */
+    #resultsInfo { text-align:center; font-size:12px; color:#b07e8a; margin-bottom:1.5rem; letter-spacing:0.05em; }
+
+    @media(max-width:600px) {
+      .nav-links a { display:none; }
+      .stat-divider { display:none; }
+      .form-row { grid-template-columns:1fr; }
+      .contact-options { grid-template-columns:1fr; }
+      .nav { padding:0.9rem 1rem; }
+    }
+
+    /* ── SECCIÓN TIKTOK ── */
+    .tiktok-section { background:linear-gradient(160deg,#fff0f5 0%,#fce4f3 60%,#ffe0ec 100%); padding:4rem 2rem; text-align:center; }
+    .tiktok-inner { max-width:680px; margin:0 auto; }
+    .tiktok-label { display:inline-flex; align-items:center; gap:7px; background:#fff; border:1.5px solid #f5d5e0; border-radius:50px; padding:6px 18px; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:#C9637A; font-weight:700; margin-bottom:1.2rem; }
+    .tiktok-embed-wrap { display:flex; justify-content:center; margin:1.5rem auto 0; max-width:340px; border-radius:24px; overflow:hidden; box-shadow:0 12px 40px rgba(194,24,91,0.15); }
+    .tiktok-cta { margin-top:1.8rem; }
+    .tiktok-cta a { display:inline-flex; align-items:center; gap:8px; background:#000; color:#fff; text-decoration:none; border-radius:50px; padding:12px 28px; font-size:13px; font-weight:700; letter-spacing:0.06em; transition:transform 0.15s,opacity 0.15s; }
+    .tiktok-cta a:hover { transform:translateY(-2px); opacity:0.88; }
+    .tiktok-hearts { font-size:1.5rem; margin-bottom:0.5rem; letter-spacing:4px; }
+
+  </style>
+</head>
+
+<body>
+
+<div class="toast" id="toast"></div>
+
+<!-- ══ MODAL CARRITO ══════════════════════════════════════ -->
+<div class="modal-overlay" id="cartModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('cartModal')">✕</button>
+    <h2 class="modal-title">Tu selección 🛍️</h2>
+    <div id="cartItems"></div>
+    <div id="cartFooter"></div>
+  </div>
+</div>
+
+<!-- ══ MODAL COTIZACIÓN MAYOREO ═══════════════════════════ -->
+<div class="modal-overlay" id="quoteModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('quoteModal')">✕</button>
+    <h2 class="modal-title">Solicitar cotización ✦</h2>
+    <div id="quoteForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Nombre *</label>
+          <input class="form-input" type="text" id="q-name" placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label class="form-label">WhatsApp *</label>
+          <input class="form-input" type="tel" id="q-phone" placeholder="+52 81 0000 0000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Tipo de pedido *</label>
+        <select class="form-select" id="q-type">
+          <option value="">Selecciona una opción</option>
+          <option>Mayoreo (10+ piezas)</option>
+          <option>Regalo / detalles</option>
+          <option>Pedido para negocio / revendedora</option>
+          <option>Surtido variado</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Cantidad de piezas</label>
+          <input class="form-input" type="number" id="q-qty" placeholder="Ej: 20" min="1">
+        </div>
+        <div class="form-group">
+          <label class="form-label">¿Cuándo las necesitas?</label>
+          <input class="form-input" type="date" id="q-date">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Marcas o modelos de interés</label>
+        <textarea class="form-textarea" id="q-desc" placeholder="Ej: Lancôme grandes, Clinique variadas, Benefit Rosa..."></textarea>
+      </div>
+      <button class="btn-primary" style="width:100%;" onclick="submitQuote()">Enviar por WhatsApp ✦</button>
+    </div>
+    <div class="form-success" id="quoteSuccess">
+      <span>🌸</span>
+      <p><strong>¡Recibimos tu solicitud!</strong><br>Te contactaremos por WhatsApp en menos de 2 horas para platicar todos los detalles de tu pedido.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MODAL NOSOTRAS ═════════════════════════════════════ -->
+<div class="modal-overlay" id="aboutModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('aboutModal')">✕</button>
+    <h2 class="modal-title">Nosotras 🌸</h2>
+    <p style="font-size:15px;color:#9e6070;line-height:1.8;margin-bottom:1rem;">Somos Makeup Zone MTY, tu tienda de cosmetiqueras de marca en Monterrey. Nos especializamos en bolsas y estuches de lujo de marcas como Lancôme, Estée Lauder, Clinique, La Mer, Benefit y Ulta Beauty.</p>
+    <p style="font-size:15px;color:#9e6070;line-height:1.8;margin-bottom:1rem;">Todas nuestras cosmetiqueras son <strong style="color:#C9637A;">100% originales</strong>, producto de cortesía y regalo de las marcas. Las ofrecemos en precios de menudeo y mayoreo con envío a todo México.</p>
+    <div class="about-highlight">
+      <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:#7a2e48;margin-bottom:0.25rem;">"Organiza tu makeup con estilo de lujo."</p>
+      <p style="font-size:12px;color:#C9637A;letter-spacing:0.1em;">— Makeup Zone MTY</p>
+    </div>
+    <button class="btn-primary" style="width:100%;" onclick="closeModal('aboutModal');openModal('quoteModal')">Hacer un pedido de mayoreo ✦</button>
+  </div>
+</div>
+
+<!-- ══ PÁGINA ══════════════════════════════════════════════ -->
+<div class="sprinkle-bar">
+  <div class="dot"></div>
+  <span>Precios de mayoreo desde 10 piezas ✦ Envíos a todo México 🇲🇽</span>
+  <div class="dot"></div>
+</div>
+
+<nav class="nav">
+  <div class="nav-logo" onclick="scrollToTop()">
+    <img src="logo.png" alt="Makeup Zone logo">
+    Makeup <span>&nbsp;Zone</span>
+  </div>
+  <div class="nav-links">
+    <a onclick="scrollToSection('catalogo')">Catálogo</a>
+    <a onclick="openModal('quoteModal')">Mayoreo</a>
+    <a onclick="scrollToSection('tiktok')">TikTok</a>
+    <a onclick="openModal('aboutModal')">Nosotras</a>
+    <button class="nav-cart" onclick="openModal('cartModal')">🛍️ Carrito (<span id="cartCount">0</span>)</button>
+  </div>
+</nav>
+
+<section class="hero" id="inicio">
+  <canvas class="hero-canvas" id="heroCanvas"></canvas>
+  <p class="hero-eyebrow">✦ Cosmetiqueras de marca originales ✦</p>
+  <h1 class="hero-title">Organiza tu makeup<br>con estilo de <span>lujo</span></h1>
+  <p class="hero-sub">Lancôme · Estée Lauder · Clinique · La Mer · Benefit · Ulta</p>
+  <p class="hero-sub2">Precios de menudeo y mayoreo · Monterrey, Nuevo León · Envíos a todo México</p>
+  <button class="btn-primary" onclick="scrollToSection('catalogo')">Ver el catálogo ✦</button>
+</section>
+
+<!-- ══ CATÁLOGO ═══════════════════════════════════════════ -->
+<section class="products" id="catalogo">
+  <h2 class="section-title">El catálogo</h2>
+  <p class="section-sub">Marcas originales · Catálogo 2026</p>
+
+  <div class="search-wrap">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="search" id="searchInput" placeholder="Buscar cosmetiquera…" oninput="doSearch()" autocomplete="off">
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="fc('all',this)">Todas 🛍️</button>
+    <button class="filter-btn" onclick="fc('clinique',this)">Clinique</button>
+    <button class="filter-btn" onclick="fc('estee',this)">Estée Lauder</button>
+    <button class="filter-btn" onclick="fc('lancome',this)">Lancôme</button>
+    <button class="filter-btn" onclick="fc('lamer',this)">La Mer</button>
+    <button class="filter-btn" onclick="fc('benefit',this)">Benefit</button>
+    <button class="filter-btn" onclick="fc('ulta',this)">Ulta</button>
+    <button class="filter-btn" onclick="fc('grande',this)">Grandes 📦</button>
+  </div>
+
+  <p id="resultsInfo"></p>
+
+  <div class="grid" id="productGrid"></div>
+  <div class="empty-state" id="emptyState">
+    <div>🔍</div>
+    <p>No encontramos esa cosmetiquera.<br>Prueba otro filtro o búsqueda.</p>
+  </div>
+</section>
+
+<!-- ══ STATS ══════════════════════════════════════════════ -->
+<section class="stats-section">
+  <div class="stats-inner">
+    <div><div class="stat-num">+500</div><div class="stat-label">Clientes felices</div></div>
+    <div class="stat-divider"></div>
+    <div><div class="stat-num">100%</div><div class="stat-label">Originales</div></div>
+    <div class="stat-divider"></div>
+    <div><div class="stat-num">6</div><div class="stat-label">Marcas de lujo</div></div>
+    <div class="stat-divider"></div>
+    <div><div class="stat-num">♡ 4.9</div><div class="stat-label">Calificación</div></div>
+  </div>
+</section>
+
+<!-- ══ TIKTOK VIDEO ══════════════════════════════════════════ -->
+<section class="tiktok-section" id="tiktok">
+  <div class="tiktok-inner">
+    <div class="tiktok-hearts">🌸 ✨ 🌸</div>
+    <h2 class="section-title">Síguenos en TikTok</h2>
+    <p class="section-sub">@makeupzonemty · ¡Mira nuestros videos!</p>
+    <span class="tiktok-label">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34v-7a8.16 8.16 0 0 0 4.78 1.52V6.38a4.85 4.85 0 0 1-1.01-.31z"/></svg>
+      Video destacado
+    </span>
+    <div class="tiktok-embed-wrap">
+      <blockquote
+        class="tiktok-embed"
+        cite="https://www.tiktok.com/@makeupzonemty/video/7631732927734287632"
+        data-video-id="7631732927734287632"
+        data-embed-from="embed_page"
+        style="max-width:325px;min-width:325px;">
+        <section>
+          <a target="_blank" href="https://www.tiktok.com/@makeupzonemty?refer=embed">@makeupzonemty</a>
+        </section>
+      </blockquote>
+    </div>
+    <div class="tiktok-cta">
+      <a href="https://www.tiktok.com/@makeupzonemty" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34v-7a8.16 8.16 0 0 0 4.78 1.52V6.38a4.85 4.85 0 0 1-1.01-.31z"/></svg>
+        Ver más en TikTok
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MAYOREO ════════════════════════════════════════════ -->
+<section class="mayoreo-section" id="mayoreo">
+  <div class="mayoreo-inner">
+    <span class="mayoreo-icon">💼</span>
+    <h2 class="mayoreo-title">Precios especiales de mayoreo</h2>
+    <p class="mayoreo-text">¿Tienes un negocio o quieres surtir? Con 10 piezas o más accedes a precios de mayoreo en todas las marcas. También manejamos surtidos variados y envíos exprés.</p>
+    <div class="tags">
+      <span class="tag" onclick="selectTipo('Mayoreo (10+ piezas)')">Mayoreo</span>
+      <span class="tag" onclick="selectTipo('Regalo / detalles')">Regalos</span>
+      <span class="tag" onclick="selectTipo('Pedido para negocio / revendedora')">Revendedoras</span>
+      <span class="tag" onclick="selectTipo('Surtido variado')">Surtido variado</span>
+    </div>
+    <button class="btn-primary" onclick="openModal('quoteModal')">Solicitar cotización ✦</button>
+  </div>
+</section>
+
+<!-- ══ RESEÑAS ════════════════════════════════════════════ -->
+<section class="testi-section">
+  <h2 class="section-title">Lo que dicen ellas</h2>
+  <p class="section-sub">Clientas que ya son parte de la familia</p>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"Pedí 15 cosmetiqueras de Lancôme para un evento y quedaron increíbles. El precio de mayoreo es muy bueno y llegaron rápidísimo."</p>
+      <p class="testi-name">— Karla M., Monterrey</p>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"La Clinique x Kate Spade es un sueño. La uso a diario y todos me preguntan dónde la compré. 100% original y al mejor precio."</p>
+      <p class="testi-name">— Daniela V., CDMX</p>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"Excelente atención y entrega rapidísima. Ya llevo 3 pedidos de mayoreo para mi tienda y siempre quedan perfectas."</p>
+      <p class="testi-name">— Fernanda R., GDL</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACTO ═══════════════════════════════════════════ -->
+<section class="contact-section" id="contacto">
+  <div class="contact-inner">
+    <h2 class="section-title">Encuéntranos</h2>
+    <p class="section-sub">Estamos aquí para ti</p>
+    <div class="contact-options">
+      <a class="contact-card" href="https://wa.me/528134459071" target="_blank">
+        <div class="contact-card-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="24" fill="#25D366"/>
+            <path d="M34.6 13.3A14.9 14.9 0 0 0 24 9C16.3 9 10 15.3 10 23c0 2.5.7 4.9 1.9 7L10 38l8.2-2.1a14.9 14.9 0 0 0 5.8 1.2c7.7 0 14-6.3 14-14 0-3.7-1.5-7.3-4-9.8zm-10.6 21.5c-2.1 0-4.2-.6-6-1.6l-.4-.3-4.4 1.1 1.1-4.3-.3-.5A12.4 12.4 0 0 1 12 23c0-6.6 5.4-12 12-12 3.2 0 6.2 1.2 8.5 3.5s3.5 5.3 3.5 8.5c0 6.6-5.4 12-12 12zm6.6-9c-.4-.2-2.1-1-2.4-1.1-.3-.1-.5-.2-.8.2-.2.3-.9 1.1-1.1 1.4-.2.2-.4.2-.8 0-.4-.2-1.6-.6-3-1.8-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.7l.6-.7c.2-.2.2-.4.4-.6.1-.2.1-.4 0-.6-.2-.2-.8-1.9-1.1-2.6-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.5-.3.3-1.2 1.2-1.2 2.9s1.2 3.3 1.4 3.6c.2.2 2.4 3.7 5.9 5.1.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 2.1-.8 2.4-1.7.3-.8.3-1.5.2-1.7-.1-.2-.4-.3-.7-.4z" fill="white"/>
+          </svg>
+        </div>
+        <div class="contact-card-title">WhatsApp</div>
+        <div class="contact-card-sub">813 445 9071 · Respuesta rápida</div>
+      </a>
+      <a class="contact-card" href="https://www.instagram.com/makeupzonemty/" target="_blank">
+        <div class="contact-card-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="ig1" cx="30%" cy="107%" r="150%">
+                <stop offset="0%" stop-color="#fdf497"/>
+                <stop offset="5%" stop-color="#fdf497"/>
+                <stop offset="45%" stop-color="#fd5949"/>
+                <stop offset="60%" stop-color="#d6249f"/>
+                <stop offset="90%" stop-color="#285AEB"/>
+              </radialGradient>
+            </defs>
+            <rect width="48" height="48" rx="12" fill="url(#ig1)"/>
+            <rect x="13" y="13" width="22" height="22" rx="6" fill="none" stroke="white" stroke-width="2.5"/>
+            <circle cx="24" cy="24" r="5.5" fill="none" stroke="white" stroke-width="2.5"/>
+            <circle cx="31" cy="17" r="1.5" fill="white"/>
+          </svg>
+        </div>
+        <div class="contact-card-title">Instagram</div>
+        <div class="contact-card-sub">@makeupzonemty</div>
+      </a>
+      <a class="contact-card" href="https://www.facebook.com/MakeupZoneMty" target="_blank">
+        <div class="contact-card-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="24" fill="#1877F2"/>
+            <path d="M32 24h-5v-3c0-1.1.9-2 2-2h2v-4h-3c-3.3 0-6 2.7-6 6v3h-4v4h4v12h5V28h3l1-4z" fill="white"/>
+          </svg>
+        </div>
+        <div class="contact-card-title">Facebook</div>
+        <div class="contact-card-sub">Makeup Zone MTY</div>
+      </a>
+      <div class="contact-card" onclick="openModal('quoteModal')">
+        <div class="contact-card-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="24" fill="#C9637A"/>
+            <text x="24" y="30" text-anchor="middle" font-size="22" fill="white">🛍️</text>
+          </svg>
+        </div>
+        <div class="contact-card-title">Mayoreo</div>
+        <div class="contact-card-sub">10+ piezas · Precios especiales</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-title" onclick="scrollToTop()">
+    <img src="logo.png" alt="Makeup Zone MTY" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid #E8A0B4;background:#fff;">
+    Makeup Zone MTY
+  </div>
+  <p class="footer-sub">✦ Cosmetiqueras de marca originales ✦</p>
+  <div class="footer-links">
+    <a onclick="scrollToSection('catalogo')">Catálogo</a>
+    <a href="https://wa.me/528134459071" target="_blank">WhatsApp</a>
+    <a href="https://www.instagram.com/makeupzonemty/" target="_blank">Instagram</a>
+    <a onclick="openModal('quoteModal')">Mayoreo</a>
+    <a onclick="scrollToSection('tiktok')">TikTok</a>
+    <a onclick="openModal('aboutModal')">Nosotras</a>
+  </div>
+  <p style="margin-top:1.5rem;font-size:11px;color:#c4849a;">© 2026 Makeup Zone MTY · Monterrey, Nuevo León · Envíos a todo México 🇲🇽</p>
+</footer>
+
+<script>
+  const WA = '528134459071';
+
+  /* ── PRODUCTOS ─────────────────────────────────── */
+  const products = [
+    {
+      id:1, brand:'Clinique', name:'Kate Spade "Hello, Gorgeous"',
+      size:'23 × 16 × 7 cm', tags:'clinique', badge:'',
+      priceM:99, priceB:49,
+      img:'cliniquekate-spade.png',
+      imgStyle:'object-fit:contain;width:100%;height:100%;',
+      bg:'#fff5f8',
+      wa:'Hola!%20Me%20interesa%20la%20cosmetiquera%20Clinique%20x%20Kate%20Spade'
+    },
+    {
+      id:2, brand:'Estée Lauder', name:'Lunas & Estrellas',
+      size:'22 × 14 × 4 cm', tags:'estee', badge:'',
+      priceM:109, priceB:59,
+      img:'lunas.png',
+      imgStyle:'object-fit:contain;width:100%;height:100%;',
+      bg:'#f0f0fa',
+      wa:'Hola!%20Me%20interesa%20la%20cosmetiquera%20Estee%20Lauder%20Lunas'
+    },
+    {
+      id:3, brand:'La Mer', name:'Celeste Metálico',
+      size:'17 × 12 × 4.5 cm', tags:'lamer', badge:'',
+      priceM:119, priceB:60,
+      img:'la_mer_metalica.png',
+      imgStyle:'object-fit:contain;width:100%;height:100%;',
+      bg:'#f0f4fb',
+      wa:'Hola!%20Me%20interesa%20la%20cosmetiquera%20La%20Mer%20Celeste'
+    },
+    {
+      id:4, brand:'Estée Lauder', name:'Rosa Floral',
+      size:'23 × 14 × 4 cm', tags:'estee', badge:'',
+      priceM:119, priceB:62,
+      img:'estee_lauder_rosa_fuerte.png',
+      imgStyle:'object-fit:contain;width:100%;height:100%;',
+      bg:'#fff5f8',
+      wa:'Hola!%20Me%20interesa%20la%20cosmetiquera%20Estee%20Lauder%20Rosa'
+    },
+    {
+      id:5, brand:'Estée Lauder', name:'Celeste Floral',
+      size:'20 × 10 × 7 cm', tags:'estee', badge:'',
+      priceM:129, priceB:65,
+      img:'estee_lauder_celeste.png',
+      imgStyle:'object-fit:contain;width:100%;height:100%;',
+      bg:'#f0f4fb',
+      wa:'Hola!%20Me%20interesa%20la%20cosmetiquera%20Estee%20Lauder%20Celeste'
+    },
+    {
+      id:6, brand:'Lancôme', name:'Grande Neopreno Negro',
+      size:'25 × 10 × 10 cm', tags:'lancome grande', badge:'GRANDE',
+      priceM:139, priceB:69,
+      img:'lancome_negra.png',
+      imgStyle:'object-fit:contain;width:100%;height:100%;',
+      bg:'#f5f5f5',
+      wa:'Hola!%20Me%20interesa%20la%20cosmetiquera%20Lancome%20Grande%20Neopreno'
+    },
+    {
+      id:7, brand:'Lancôme', name:'Rosa Texturizada',
+      size:'19 × 12 × 4 cm', tags:'lancome', badge:'',
+      priceM:109, priceB:70,
+      img:'lancome_rosita_claro.png',
+      imgStyle:'object-fit:contain;width:100%;height:100%;',
+      bg:'#fff5f8',
+      wa:'Hola!%20Me%20interesa%20la%20cosmetiquera%20Lancome%20Rosa'
+    },
+    {
+      id:8, brand:'Benefit', name:'Beige con Rosa Tejida',
+      size:'24 × 14 × 6 cm', tags:'benefit', badge:'',
+      priceM:139, priceB:75,
+      img:'benefitbeige.png',
+      imgStyle:'object-fit:contain;width:100%;height:100%;',
+      bg:'#fff8f0',
+      wa:'Hola!%20Me%20interesa%20la%20cosmetiquera%20Benefit%20Beige%20con%20Rosa'
+    },
+    {
+      id:9, brand:'Benefit', name:'Rosa Corazones (int. impermeable)',
+      size:'17 × 7 × 7 cm', tags:'benefit', badge:'',
+      priceM:139, priceB:75,
+      img:'benefitrosa.png',
+      imgStyle:'object-fit:contain;width:100%;height:100%;',
+      bg:'#fff0f5',
+      wa:'Hola!%20Me%20interesa%20la%20cosmetiquera%20Benefit%20Rosa%20Corazones'
+    },
+    {
+      id:10, brand:'Ulta', name:'Morada Acolchada Grande',
+      size:'23 × 13 × 9 cm', tags:'ulta grande', badge:'GRANDE',
+      priceM:119, priceB:79,
+      img:'ulta_morada.png',
+      imgStyle:'object-fit:contain;width:100%;height:100%;',
+      bg:'#f5eaf5',
+      wa:'Hola!%20Me%20interesa%20la%20cosmetiquera%20Ulta%20Morada'
+    },
+    {
+      id:11, brand:'Lancôme', name:'Roja Acolchada Grande',
+      size:'18 × 13 × 6 cm', tags:'lancome grande', badge:'GRANDE',
+      priceM:139, priceB:79,
+      img:'lancome_roja.png',
+      imgStyle:'object-fit:contain;width:100%;height:100%;',
+      bg:'#fdf0f0',
+      wa:'Hola!%20Me%20interesa%20la%20cosmetiquera%20Lancome%20Roja'
+    },
+    {
+      id:12, brand:'Lancôme', name:'Dorada Metálica Grande',
+      size:'27 × 22 × 5 cm', tags:'lancome grande', badge:'GRANDE',
+      priceM:139, priceB:80,
+      img:'lancome_dorada.png',
+      imgStyle:'object-fit:contain;width:100%;height:100%;',
+      bg:'#faf5e8',
+      wa:'Hola!%20Me%20interesa%20la%20cosmetiquera%20Lancome%20Dorada'
+    },
+  ];
+
+  const cardQty = {};
+  products.forEach(p => cardQty[p.id] = 1);
+  let cart = [];
+  let currentFilter = 'all';
+  let currentSearch = '';
+
+  /* ── RENDER PRODUCTOS ─────────────────────────── */
+  function renderProducts() {
+    document.getElementById('productGrid').innerHTML = products.map(p => `
+      <div class="card" id="card-${p.id}" data-tags="${p.tags}" data-name="${p.brand.toLowerCase()} ${p.name.toLowerCase()}">
+        <div class="card-img-wrap" style="background:${p.bg}">
+          <img src="${p.img}" alt="${p.brand} ${p.name}" style="${p.imgStyle}">
+          ${p.badge ? `<span class="card-badge">${p.badge}</span>` : ''}
+        </div>
+        <div class="card-body">
+          <div class="card-brand">${p.brand}</div>
+          <div class="card-name">${p.name}</div>
+          <div class="card-size">📐 ${p.size}</div>
+          <div class="price-row">
+            <div class="pill pill-r"><div class="pill-label">1–9 pz</div>$${p.priceM}</div>
+            <div class="pill pill-b"><div class="pill-label">10+ pz</div>$${p.priceB}</div>
+          </div>
+          <div class="qty-row">
+            <span class="qty-label">Cantidad:</span>
+            <div class="qty-ctrl">
+              <button class="qty-btn" onclick="changeCardQty(${p.id},-1)">−</button>
+              <span class="qty-num" id="cq-${p.id}">${cardQty[p.id]}</span>
+              <button class="qty-btn" onclick="changeCardQty(${p.id},1)">+</button>
+            </div>
+          </div>
+          <button class="btn-add" id="btn-${p.id}" onclick="addToCart(${p.id})">
+            Agregar al carrito 🛒
+          </button>
+        </div>
+      </div>
+    `).join('');
+    applyFilters();
+  }
+
+  /* ── FILTROS + BÚSQUEDA ───────────────────────── */
+  function fc(tag, btn) {
+    currentFilter = tag;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyFilters();
+  }
+
+  function doSearch() {
+    currentSearch = document.getElementById('searchInput').value.toLowerCase().trim();
+    applyFilters();
+  }
+
+  function applyFilters() {
+    const cards = document.querySelectorAll('#productGrid .card');
+    let visible = 0;
+    cards.forEach(c => {
+      const tags = c.getAttribute('data-tags') || '';
+      const name = c.getAttribute('data-name') || '';
+      const tagMatch = currentFilter === 'all' || tags.includes(currentFilter);
+      const searchMatch = !currentSearch || name.includes(currentSearch);
+      const show = tagMatch && searchMatch;
+      c.classList.toggle('hidden', !show);
+      if (show) visible++;
+    });
+    document.getElementById('emptyState').classList.toggle('visible', visible === 0);
+    const total = products.length;
+    document.getElementById('resultsInfo').textContent =
+      visible === total ? `${total} cosmetiqueras disponibles` : `${visible} de ${total} cosmetiqueras`;
+  }
+
+  /* ── CARRITO ──────────────────────────────────── */
+  function changeCardQty(id, delta) {
+    cardQty[id] = Math.max(1, cardQty[id] + delta);
+    const el = document.getElementById('cq-'+id);
+    if (el) el.textContent = cardQty[id];
+  }
+
+  function addToCart(id) {
+    const p = products.find(x => x.id === id);
+    const qty = cardQty[id];
+    const existing = cart.find(i => i.id === id);
+    if (existing) existing.qty += qty;
+    else cart.push({ ...p, qty });
+    updateCartCount();
+    showToast(`💕 ${qty > 1 ? qty+'x ' : ''}${p.brand} ${p.name} agregada${qty>1?'s':''}`);
+    const btn = document.getElementById('btn-'+id);
+    if (btn) {
+      btn.textContent = '✓ ¡Agregada al carrito!';
+      btn.classList.add('added');
+      setTimeout(() => {
+        btn.classList.remove('added');
+        btn.textContent = 'Agregar al carrito 🛒';
+      }, 1800);
+    }
+  }
+
+  function updateCartCount() {
+    document.getElementById('cartCount').textContent = cart.reduce((s,i) => s+i.qty, 0);
+  }
+
+  function renderCart() {
+    const el = document.getElementById('cartItems');
+    const footer = document.getElementById('cartFooter');
+    if (cart.length === 0) {
+      el.innerHTML = '<div class="cart-empty"><span>🛍️</span>Tu carrito está vacío.<br>¡Agrega algunas cosmetiqueras!</div>';
+      footer.innerHTML = '';
+      return;
+    }
+    const totalPiezas = cart.reduce((s,i) => s+i.qty, 0);
+    const esMayoreo = totalPiezas >= 10;
+    el.innerHTML = cart.map((item, idx) => {
+      const precio = esMayoreo ? item.priceB : item.priceM;
+      return `
+      <div class="cart-item">
+        <img class="cart-item-thumb" src="${item.img}" alt="${item.name}" style="object-fit:contain;width:48px;height:48px;">
+        <div class="cart-item-info">
+          <div class="cart-item-brand">${item.brand}</div>
+          <div class="cart-item-name">${item.name}</div>
+          <div class="cart-item-price">$${precio} c/u · subtotal $${precio * item.qty}</div>
+        </div>
+        <div class="cart-qty-ctrl">
+          <button class="cqty-btn" onclick="changeCartQty(${idx},-1)">−</button>
+          <span class="cqty-num">${item.qty}</span>
+          <button class="cqty-btn" onclick="changeCartQty(${idx},1)">+</button>
+        </div>
+      </div>`;
+    }).join('');
+
+    const total = cart.reduce((s,i) => s + (esMayoreo ? i.priceB : i.priceM) * i.qty, 0);
+    const faltanParaMayoreo = 10 - totalPiezas;
+    footer.innerHTML = `
+      <div class="cart-total-row">
+        <span class="cart-total-label">Total ${esMayoreo ? '🌟 Mayoreo' : 'Menudeo'}</span>
+        <span class="cart-total-price">$${total}</span>
+      </div>
+      <div class="pay-info" style="margin-top:0.75rem;">
+        ${esMayoreo
+          ? '🌟 <strong>¡Precio mayoreo aplicado!</strong> Gracias por tu pedido de ' + totalPiezas + ' piezas.'
+          : 'Precio menudeo · Te faltan <strong>' + faltanParaMayoreo + ' pieza' + (faltanParaMayoreo>1?'s':'') + '</strong> para obtener precio mayoreo'}
+      </div>
+      <div style="height:1rem"></div>
+      <button onclick="checkoutWA()" style="width:100%;background:#25d366;border:none;color:#fff;border-radius:50px;padding:13px 0;font-size:14px;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;letter-spacing:0.06em;display:flex;align-items:center;justify-content:center;gap:8px;transition:background 0.15s;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.528 5.845L.057 23.485l5.787-1.517A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.649-.52-5.148-1.422l-.37-.219-3.435.9.919-3.352-.24-.386A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Pedir por WhatsApp
+      </button>
+      <div class="pay-divider"><div class="pay-divider-line"></div><span class="pay-divider-text">o también</span><div class="pay-divider-line"></div></div>
+      <button onclick="closeModal('cartModal');openModal('quoteModal')" style="width:100%;background:#fff;border:1.5px solid #E8A0B4;color:#C9637A;border-radius:50px;padding:12px 0;font-size:13px;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;letter-spacing:0.05em;transition:background 0.15s;">
+        💼 Solicitar cotización mayoreo
+      </button>
+      <button onclick="clearCart()" style="width:100%;margin-top:10px;background:none;border:1px solid #f5d5e0;color:#b07e8a;border-radius:50px;padding:10px;font-size:12px;cursor:pointer;font-family:'Lato',sans-serif;letter-spacing:0.05em;">
+        Vaciar carrito
+      </button>
+    `;
+  }
+
+  function changeCartQty(idx, delta) {
+    cart[idx].qty += delta;
+    if (cart[idx].qty <= 0) cart.splice(idx, 1);
+    updateCartCount();
+    renderCart();
+  }
+
+  function clearCart() {
+    cart = [];
+    updateCartCount();
+    renderCart();
+  }
+
+  function checkoutWA() {
+    if (cart.length === 0) return;
+    const totalPiezas = cart.reduce((s,i) => s+i.qty, 0);
+    const esMayoreo = totalPiezas >= 10;
+    const lines = cart.map(i => {
+      const precio = esMayoreo ? i.priceB : i.priceM;
+      return `• ${i.qty}x ${i.brand} ${i.name} — $${precio * i.qty}`;
+    }).join('%0A');
+    const total = cart.reduce((s,i) => s + (esMayoreo ? i.priceB : i.priceM) * i.qty, 0);
+    const tipoPrecio = esMayoreo ? 'mayoreo' : 'menudeo';
+    const msg = `Hola!%20🌸%20Me%20gustaría%20hacer%20el%20siguiente%20pedido%20de%20Makeup%20Zone%20MTY:%0A%0A${lines}%0A%0ATotal%20(${tipoPrecio}):%20$${total}%0A%0A¿Cómo%20procedo%20con%20el%20pago%20y%20envío?`;
+    window.open(`https://wa.me/${WA}?text=${msg}`, '_blank');
+  }
+
+  /* ── COTIZACIÓN ───────────────────────────────── */
+  function selectTipo(tipo) {
+    openModal('quoteModal');
+    setTimeout(() => { const s = document.getElementById('q-type'); if(s) s.value = tipo; }, 100);
+  }
+
+  function submitQuote() {
+    const name    = document.getElementById('q-name').value.trim();
+    const phone   = document.getElementById('q-phone').value.trim();
+    const tipo    = document.getElementById('q-type').value;
+    const qty     = document.getElementById('q-qty').value;
+    const date    = document.getElementById('q-date').value;
+    const desc    = document.getElementById('q-desc').value.trim();
+    if (!name || !phone || !tipo) { showToast('💕 Llena nombre, WhatsApp y tipo de pedido'); return; }
+    const dateStr = date ? new Date(date+'T12:00:00').toLocaleDateString('es-MX',{day:'numeric',month:'long',year:'numeric'}) : 'Por definir';
+    const msg = `Hola!%20Quiero%20solicitar%20una%20cotización%20de%20cosmetiqueras%20🌸%0A%0A👤%20Nombre:%20${encodeURIComponent(name)}%0A📱%20Contacto:%20${encodeURIComponent(phone)}%0A📦%20Tipo:%20${encodeURIComponent(tipo)}%0A🔢%20Cantidad:%20${qty||'Por%20definir'}%0A📅%20Fecha:%20${encodeURIComponent(dateStr)}%0A%0A✏️%20Detalle:%0A${encodeURIComponent(desc||'Sin descripción adicional')}`;
+    window.open(`https://wa.me/${WA}?text=${msg}`, '_blank');
+    document.getElementById('quoteForm').style.display = 'none';
+    document.getElementById('quoteSuccess').style.display = 'block';
+    setTimeout(() => {
+      document.getElementById('quoteForm').style.display = 'block';
+      document.getElementById('quoteSuccess').style.display = 'none';
+      ['q-name','q-phone','q-qty','q-date','q-desc'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('q-type').value = '';
+      closeModal('quoteModal');
+    }, 3500);
+  }
+
+  /* ── MODALES ──────────────────────────────────── */
+  function openModal(id) {
+    if (id === 'cartModal') renderCart();
+    document.getElementById(id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('.modal-overlay').forEach(el => {
+    el.addEventListener('click', e => { if (e.target === el) closeModal(el.id); });
+  });
+
+  /* ── NAVEGACIÓN ───────────────────────────────── */
+  function scrollToTop() { window.scrollTo({ top:0, behavior:'smooth' }); }
+  function scrollToSection(id) { const el = document.getElementById(id); if(el) window.scrollTo({ top:el.offsetTop-72, behavior:'smooth' }); }
+
+  /* ── TOAST ────────────────────────────────────── */
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(t._timer);
+    t._timer = setTimeout(() => t.classList.remove('show'), 2400);
+  }
+
+  /* ── HERO CANVAS ──────────────────────────────── */
+  const canvas = document.getElementById('heroCanvas');
+  const ctx = canvas.getContext('2d');
+  let shapes = [];
+  function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+  function init() {
+    shapes = [];
+    for (let i=0; i<30; i++) shapes.push({
+      x: Math.random()*canvas.width, y: Math.random()*canvas.height,
+      r: Math.random()*5+2, speed: Math.random()*0.4+0.1,
+      drift: Math.random()*0.3-0.15, opacity: Math.random()*0.22+0.07,
+      type: Math.floor(Math.random()*3), rot: Math.random()*Math.PI*2,
+      rotSpeed: (Math.random()-0.5)*0.02
+    });
+  }
+  function draw() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    shapes.forEach(s => {
+      ctx.save(); ctx.translate(s.x,s.y); ctx.rotate(s.rot); ctx.globalAlpha=s.opacity;
+      if (s.type===0) { ctx.fillStyle='#C9637A'; ctx.beginPath(); ctx.arc(0,0,s.r,0,Math.PI*2); ctx.fill(); }
+      else if (s.type===1) {
+        // lipstick silhouette — thin vertical pill
+        ctx.fillStyle='#E8A0B4';
+        ctx.beginPath(); ctx.roundRect(-s.r*0.5,-s.r*2,s.r,s.r*4,s.r*0.4); ctx.fill();
+      }
+      else {
+        // sparkle star
+        ctx.fillStyle='#f9b8cc';
+        for(let p=0;p<4;p++){
+          ctx.beginPath();
+          ctx.ellipse(0,-s.r*1.2,s.r*0.45,s.r*1.2,p*Math.PI/2,0,Math.PI*2);
+          ctx.fill();
+        }
+      }
+      ctx.restore();
+      s.y -= s.speed; s.x += s.drift; s.rot += s.rotSpeed;
+      if (s.y < -20) { s.y = canvas.height+10; s.x = Math.random()*canvas.width; }
+    });
+    requestAnimationFrame(draw);
+  }
+  resize(); init(); draw();
+  window.addEventListener('resize', () => { resize(); init(); });
+
+  /* ── INIT ─────────────────────────────────────── */
+  renderProducts();
+</script>
+  <script async src="https://www.tiktok.com/embed.js"></script>
+</body>
+</html>
